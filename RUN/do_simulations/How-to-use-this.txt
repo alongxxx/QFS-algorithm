@@ -1,0 +1,83 @@
+Hifolks, 
+
+Thisis just an example to show how to compute LTE-Sim results and how to get a graphic. (This is what I use, so I share this to you just to give you an idea how to compute results.)
+Thereare 14 shells (files.sh).
+Themain file is doSim1.sh. Is in this file where you must set all the parameters of your simulation.
+Thisfile is made to make simulations using ONLY these algorithms PF, EXP/PF, and M-LWDF. 
+WhatdoSim1.sh does, is making several simulations for each scenario and then it gets the simulations average, and finally it makes a graphic. This rutine is made only to use, "SingleCellWithInterference" scenario.
+
+Youshould install "gnu plot" in your sistem to see the graphics. I use ubuntu for my simulations, so this was only tested in ubuntu.
+
+
+HOwto use.
+
+1.Inside toyr LTE-Sim Forlder create a folder and copy all these files.
+
+2.Open doSim1.sh and the set all your params as you need. For example:
+
+FILE="Sim"  #OUTPUT FILE NAME // put here whatever you want
+NUMSIM= #Number of simulations // how many simulations are you gonna make for each scanario and each algoritm, in this case 5
+FILENAME="Video_BE_VOIP"  # SIMULATION TYPE NAME // here you can use put the type of simulation you make, for example if you wanna make a simulation of video flow, best effort flows, and voip flows, call it 'video_be_voip'.
+COUNT=// dont touch this!
+CELS=      # NUMBER OF CELLS // Dont touch this!
+TOTALNAME=""// Dont touch this!
+
+#here you shoul set your range of users for the simulations, in this case the simulations will be made for 5, 10, 15, and 20 users. (it starts in 5 users, the interval is 5 users until 20 users)
+MINUSERS=# Start users 
+INTERVAL=# Interval between users
+MAXUSERS=#max of users 
+
+#params of LTE-SIM // these are the normal params that you set when you run a simple simulation.
+
+RADIUS=# Radius in Km
+NBUE=#Number of UE's // dont touch this!
+NBVOIP= # Number of Voip Flows
+NBVIDEO=#Number of Video
+NBBE=# Number of Best Effort Flows
+NBCBR=#Number of CBR flows
+#SchedulerType PF=1, MLWDF=2 EXP= 3 // this is setted automatically in this rutine. 
+FRAME_STRUCT= # FDD or TDD
+SPEED=#User speed 
+MAXDELAY=0.1
+VIDEOBITRATE=242
+
+
+Ateh end of LTE Sim you will see this:
+HeredoSim1.sh calls other sells to caopute results and make the graphics.
+Theonly thing you must change is the parameter 7, and 8.
+param7 is the type of flow, VIDEO, CBR, INF_BUF or VOIP (this is the trace output format).
+param8 is the name of the graphic you want to set.
+Inthis example there is 3 type of flows I used VIDEO, VOIP, and INF_BUF because my simulation is made for those flows, (see NBVOIP, NBVIDEO, NBBE)
+
+#params 1 MINUSERS, 2 MAXUSERS, 3 INTERVAL, 4 FILENAME, 5 FILE, 6 NUMSIM, 7 TypeFlow, 8 Graphic_name
+#result shells
+./packet_loss_ratio.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VIDEO Packet-Loss-Ratio
+./packet_loss_ratio.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VOIP Packet-Loss-Ratio
+./packet_loss_ratio.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM INF_BUF Packet-Loss-Ratio
+./thoughput_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VIDEO Throughput
+./thoughput_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VOIP Throughput
+./thoughput_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM INF_BUF Throughput
+./delay_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VIDEO Delay
+./delay_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VOIP Delay
+./delay_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM INF_BUF Delay
+./spectral_efficiency_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM Spectral-Efficiency Spec-Eff
+./fairnessIndex_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM  VIDEO Fairness-Index
+./fairnessIndex_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM  VOIP Fairness-Index
+./fairnessIndex_comp.sh$MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM  INF_BUF Fairness-Index
+
+3.In doSim1.sh you will see this path. "/usr/local/home/miturral/LTE-Sim/./LTE-Sim SingleCellWithI" this is my path, change it for yours (where you have LTE Sim.)
+	3.In all files search  this "/usr/local/home/miturral/LTE-Sim/src/Simulations/TOOLS/", this is MY PATH, change it for yours.
+
+4.In the fllow files compute-thoughput.sh, compute_spectral_efficiency.sh, fairnessIndex_comp.sh, spectral_efficiency_comp.sh, throughput_comp "TIME" is setted with 120 or 150, change this value for for the time of your simulation that is set in "single-cell-with-interference.h" in LTE-Sim.
+
+5.give permissions to all shells using % chmod 777  shell_name.sh.
+
+Finally run doSim.sh, 
+
+7.Go for a coffe, cause these simulations will take a while.
+
+
+Ifyou need help just send me a mail, mauricio.iturralde@irit.fr maybe I mised something. You can write in english spanish or french ;).
+
+Goodluck!
+

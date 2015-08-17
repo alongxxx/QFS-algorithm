@@ -1,0 +1,21 @@
+FILE Sim_1_Multi_PF_10U1C.sim CREATED!
+FILE Sim_1_Multi_MLWDF_10U1C.sim CREATED!
+FILE Sim_1_Multi_EXPPF_10U1C.sim CREATED!
+../../LTE-Sim MultiCell 1 3 10 1 1 1 0 7 1 3 0.1 242 1
+FILE Sim_1_Multi_MY_algo_10U1C.sim CREATED!
+../../LTE-Sim MultiCell 1 3 10 1 1 1 0 8 1 3 0.1 242 1
+FILE Sim_1_Multi_MY_algo2_10U1C.sim CREATED!
+FILE Sim_1_Multi_PF_20U1C.sim CREATED!
+FILE Sim_1_Multi_MLWDF_20U1C.sim CREATED!
+FILE Sim_1_Multi_EXPPF_20U1C.sim CREATED!
+../../LTE-Sim MultiCell 1 3 20 1 1 1 0 7 1 3 0.1 242 1
+FILE Sim_1_Multi_MY_algo_20U1C.sim CREATED!
+../../LTE-Sim MultiCell 1 3 20 1 1 1 0 8 1 3 0.1 242 1
+FILE Sim_1_Multi_MY_algo2_20U1C.sim CREATED!
+FILE Sim_1_Multi_PF_30U1C.sim CREATED!
+FILE Sim_1_Multi_MLWDF_30U1C.sim CREATED!
+FILE Sim_1_Multi_EXPPF_30U1C.sim CREATED!
+../../LTE-Sim MultiCell 1 3 30 1 1 1 0 7 1 3 0.1 242 1
+FILE Sim_1_Multi_MY_algo_30U1C.sim CREATED!
+../../LTE-Sim MultiCell 1 3 30 1 1 1 0 8 1 3 0.1 242 1
+
