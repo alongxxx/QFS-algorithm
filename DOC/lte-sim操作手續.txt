@@ -1,0 +1,41 @@
+compile lte-sim: 
+	
+	移動到 ./lte-sim/
+
+		1. 安裝相關套件 
+			./install_list
+
+		2. 開始 compile lte-sim 
+			./my_make
+
+執行 lte-sim :
+	移動到 ./lte-sim/RUN/do_simulations/
+
+		1.修改 ./doSim1.sh 參數 (大部分重要的參數都在這修改)
+			
+			下列為一些常用參數:
+				MINUSERS=50 	//初始用戶數
+				INTERVAL=10 	//用戶數級距
+				MAXUSERS=110 	//最大用戶數 
+				RADIUS			//cell 半徑
+				CELS=1 			//cell 數量 只能為 1,7,19個
+
+				NBVOIP=1  		//voip 數量
+				NBVIDEO=1 		//video 數量
+				NBBE=0 			//best effort 數量
+				NBCBR=1 		//CBR 數量
+
+				SPEED=120		//可為 0,3,120 km/h
+
+				..................
+
+		2. 在 ./doSim1.sh 裡面 ，可以看到我們是把上面那些參數帶入./LTE-Sim 執行
+
+		ex :  ../../LTE-Sim MultiCell $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR 7 $FRAME_STRUCT ...........
+
+			a. 其中，"MultiCell" 代表模擬環境，可去 LTE-Sim.cpp 參考有哪些參數可用。
+			b. 其中，數字 "7" 代表 schedule 的演算法，可去 上述環境所對應的 .h 檔中看看個別參數代表的意義
+				ex : 若上述的環境為  MultiCell，就去 ./lte-sim/src/scenarios/multi-cell.h 看第7號 schedule 是哪個演算法。
+
+		3. 執行的結果會產生一堆 .sim 檔
+		4. 從這些 .sim 檔會自動產生圖片檔作為最後結果。
